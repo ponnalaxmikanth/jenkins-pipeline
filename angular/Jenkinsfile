@@ -1,8 +1,15 @@
 pipeline {
     agent any 
+	options {
+	// This is required if you want to clean before build
+	skipDefaultCheckout(true)
+		timestamps ()
+    }
     stages {
         stage('Download Code') {
             steps {
+		    // Clean before build
+                cleanWs()
                 echo 'Download Code from Git' 
                 script {
                     // The below will clone your repo and will be checked out to master branch by default.
