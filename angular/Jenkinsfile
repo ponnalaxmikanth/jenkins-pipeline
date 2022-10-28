@@ -48,7 +48,7 @@ pipeline {
             }
         }
 
-        stage('Bundle') {
+        stage('Build') {
 			steps {
 				sh '''
 				PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin
