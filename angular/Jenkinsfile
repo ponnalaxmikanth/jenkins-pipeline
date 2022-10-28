@@ -29,6 +29,7 @@ pipeline {
                 }
                 sh '''
 		PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin
+		cd UI
                 echo "PATH = ${PATH}"
                 node --version
                 npm --version
