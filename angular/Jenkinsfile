@@ -34,6 +34,7 @@ pipeline {
                 node --version
                 npm --version
                 npm cache clean --force
+		npm install -g @angular/cli
                 npm install --force
                 echo "Install dependencies successfully!"
                 '''
