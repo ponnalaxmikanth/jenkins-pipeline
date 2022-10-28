@@ -23,7 +23,7 @@ pipeline {
                 }
             }
         }
-        stage('Install dependencies') {
+        stage('Install Dependencies') {
 			steps {
                 script {
                     if (fileExists('node_modules')) {
@@ -48,7 +48,7 @@ pipeline {
             }
         }
 
-        stage('Bundle Angular application') {
+        stage('Bundle') {
 			steps {
 				sh '''
 				PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin
@@ -64,12 +64,12 @@ pipeline {
         //         echo 'Run the security check against the application' 
         //     }
         // }
-        stage('Run Unit Tests') {
+        stage('Unit Tests') {
             steps {
                 echo 'Run unit tests from the source code' 
             }
         }
-        stage('Run Integration Tests') {
+        stage('Integration Tests') {
             steps {
                 echo 'Run only crucial integration tests from the source code' 
             }
