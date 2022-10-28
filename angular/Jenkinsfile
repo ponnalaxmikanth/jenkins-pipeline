@@ -9,7 +9,7 @@ pipeline {
         stage('Download Code') {
             steps {
 		    // Clean before build
-                cleanWs()
+                // cleanWs()
                 echo 'Download Code from Git' 
                 script {
                     // The below will clone your repo and will be checked out to master branch by default.
