@@ -4,19 +4,19 @@ pipeline {
         stage('Download Code') {
             steps {
                 echo 'Download Code from Git' 
-		    script {
-			   // The below will clone your repo and will be checked out to master branch by default.
-			   git credentialsId: 'jenkins-user-github', url: 'https://github.com/ponnalaxmikanth/home-tracker.git'
-			   // Do a ls -lart to view all the files are cloned. It will be clonned. This is just for you to be sure about it.
-			   // sh "ls -lart ./*" 
-			   // List all branches in your repo. 
-			   // sh "git branch -a"
-			   // Checkout to a specific branch in your repo.
-			   sh "git checkout development"
-		  }
+                script {
+                    // The below will clone your repo and will be checked out to master branch by default.
+                    git credentialsId: 'jenkins-user-github', url: 'https://github.com/ponnalaxmikanth/home-tracker.git'
+                    // Do a ls -lart to view all the files are cloned. It will be clonned. This is just for you to be sure about it.
+                    // sh "ls -lart ./*" 
+                    // List all branches in your repo. 
+                    // sh "git branch -a"
+                    // Checkout to a specific branch in your repo.
+                    sh "git checkout development"
+                }
             }
         }
-        stage('Install dependencies'){
+        stage('Install dependencies') {
 			steps {
                 script {
                     if (fileExists('node_modules')) {
@@ -28,14 +28,24 @@ pipeline {
                     }
                 }
                 sh '''
-		PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin
-		cd UI
+                PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin
+                cd UI
                 echo "PATH = ${PATH}"
                 node --version
                 npm --version
                 npm cache clean --force
                 npm install --force
                 echo "Install dependencies successfully!"
+                '''
+            }
+        }
+
+        stage('Bundle Angular application') {
+			steps {
+				sh '''
+                echo "BUILD NUMBER = $BUILD_NUMBER"
+                ./node_modules/.bin/ng build --aot --prod
+                echo ""
                 '''
             }
         }
