@@ -44,6 +44,8 @@ pipeline {
         stage('Bundle Angular application') {
 			steps {
 				sh '''
+				PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin
+                cd UI
                 echo "BUILD NUMBER = $BUILD_NUMBER"
                 ./node_modules/.bin/ng build --aot --prod
                 echo ""
