@@ -34,7 +34,7 @@ pipeline {
                 node --version
                 npm --version
                 npm cache clean --force
-                npm install
+                npm install --force
                 echo "Install dependencies successfully!"
                 '''
             }
