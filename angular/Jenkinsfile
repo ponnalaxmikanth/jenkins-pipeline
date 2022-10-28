@@ -18,6 +18,7 @@ pipeline {
                     }
                 }
                 sh '''
+		PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin
                 echo "PATH = ${PATH}"
                 node --version
                 npm --version
