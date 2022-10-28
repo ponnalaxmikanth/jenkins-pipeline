@@ -47,7 +47,7 @@ pipeline {
 				PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin
                 cd UI
                 echo "BUILD NUMBER = $BUILD_NUMBER"
-                ./node_modules/.bin/ng build --aot --prod
+                ./node_modules/.bin/ng build --aot --base-href /home-tracker/
                 echo ""
                 '''
             }
